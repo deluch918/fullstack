@@ -1,8 +1,12 @@
 const Entry = (props) => {
   return (
-    <p>
+    
+    <div>
       {props.person.name} {props.person.number}
-    </p>
+      <button onClick={() => props.handleDelete(props.person.id, props.person.name)}>
+          Delete
+      </button>
+    </div>
   );
 };
 

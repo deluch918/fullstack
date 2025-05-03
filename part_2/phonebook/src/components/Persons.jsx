@@ -4,7 +4,7 @@ const Persons = (props) => {
   return (
     <div>
       {props.persons.map((person) => (
-        <Entry key={person.name} person={person} />
+        <Entry key={person.id} person={person} handleDelete={props.handleDelete} />
       ))}
     </div>
   );
