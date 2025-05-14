@@ -119,6 +119,22 @@ app.post("/api/persons", (req, res) => {
   res.json(person);
 });
 
+app.put("/api/persons/:id", (req, res) => {
+  const id = req.params.id;
+  const body = req.body;
+
+  const personIndex = persons.findIndex(p => p.id === id);
+
+  if (personIndex === -1) {
+    return res.status(404).json({ error: 'Person not found' });
+  }
+
+  const updatedPerson = { ...persons[personIndex], ...body, id: id }; // Ensure id isn't changed by body
+  persons[personIndex] = updatedPerson;
+
+  res.json(updatedPerson);
+});
+
 const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: "unknown endpoint" });
 };
