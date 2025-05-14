@@ -41,7 +41,7 @@ const App = () => {
           .update(changedPerson.id, changedPerson)
           .then((response) => {
             setPersons(
-              persons.map((person) => person.name === newName ? response : person)
+              persons.map((person) => person.id === response.id ? response : person)
             );
           })
           .catch((error) => {
